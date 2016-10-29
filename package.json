@@ -43,6 +43,7 @@
     "dev:browser": "wwp && webpack --watch --config build/webpack.browser.config.js",
     "dev:native": "webpack --watch --config build/webpack.native.config.js",
     "dev:examples": "webpack --watch --config build/webpack.examples.config.js",
+    "dev:src": "webpack --watch --config build/webpack.src.config.js",
     "dev:test": "webpack --watch --config build/webpack.test.config.js",
     "build": "npm run build:native && npm run build:browser && npm run build:examples && npm run build:test",
     "lint": "eslint html5",
