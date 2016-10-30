@@ -1,0 +1,102 @@
+<style>
+.wrapper{
+  width: 750;
+  margin-top: 18;
+  margin-bottom: 18;
+  border-top-width: 1;
+  border-color: #CCCCCC;
+  border-style: solid;
+  border-bottom-width: 1;
+  background-color: #FFFFFF;
+}
+.item-box{
+  margin-left:32;
+  margin-right:32;
+  height: 100;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top-width: 1;
+  border-top-color: #DDDDDD;
+  border-top-style: solid;
+}
+.item-box-0{
+  border-top-width: 0;
+}
+.item-left{
+  flex-direction: row;
+  align-items: center;
+}
+.icon, .sub-icon{
+  width: 60;
+  height: 60;
+}
+.icon{
+  border-radius: 30;
+}
+.title {
+  padding-left: 32;
+  font-size: 34;
+  color: #333333;
+  justify-content: center;
+}
+.desc{
+  padding-left: 18;
+  font-size: 24;
+  color: #999999;
+}
+
+</style>
+<template lang="">
+  <div class="wrapper">
+    <div repeat="{{richList}}" class="item-box item-box-{{$index}}" href="{{link}}" onclick="">
+      <div class="item-left">
+        <image class="icon" src="{{icon}}"></image>
+        <text class="title">{{title}}</text>
+        <text class="desc" if="{{desc}}">{{desc}}</text>
+      </div> 
+      <div class="item-right" if="{{subIcon}}">
+        <image class="sub-icon" src="{{subIcon}}"></image>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  /**
+  * 功能性列表
+  * icon + 主标题 + 副标题 + 右边icon
+  * 自定义行数，列数，以及大小
+  */
+  
+  require('weex-components')
+  var img0 = 'https://avatars3.githubusercontent.com/u/8676306?v=3&s=466';
+  var img1 = '//img.alicdn.com/tps/TB1GzMJLXXXXXXoXXXXXXXXXXXX-183-129.png';
+  module.exports = {
+    data: {
+      richList: [{
+        icon: img0,
+        subIcon: img1,
+        title: '我的套餐',
+        desc: '这是描述',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        icon: img0,
+        title: '我的流量包',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        icon: img0,
+        title: '我的通信',
+        link: '//h5.m.taobao.com/1'
+      },{
+        icon: img0,
+        title: '我的滑板鞋',
+        link: '//h5.m.taobao.com/0'
+      }]
+    },
+    methods: {
+
+    }
+  }  
+</script>

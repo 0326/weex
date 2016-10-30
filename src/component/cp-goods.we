@@ -1,0 +1,114 @@
+<style>
+ .wrapper {
+   padding-top: 14;
+   padding-left: 18;
+   width: 750;
+   flex-direction: row;
+   flex-wrap: wrap;
+   background-color: #EEEEEE;
+ }
+ .img {
+   width: 350;
+   height: 350;
+ }
+ .item {
+   width: 350;
+   height: 496;
+   margin-right: 14;
+   margin-bottom: 14;
+   background-color: #FFFFFF;
+ }
+ .title{
+   margin: 14;
+   height: 60;
+   lines: 2;
+   font-size: 26;
+ }
+ .rmb-ctr{
+   flex-direction: row;
+   height: 44;
+   margin-bottom: 14;
+   margin-left: 14;
+   color: #FF0000;
+ }
+ .rmb-icon{
+   font-size: 26;
+   color: #FF0000;
+ }
+ .rmb-face{
+   font-size: 36;
+   color: #FF0000;
+ }
+</style>
+<template>
+  <div class="wrapper">
+    <div class="item" repeat="{{itemList}}" href="{{url}}">
+      <image class="img" src="{{img}}"></image>
+      <text class="title">{{title}}</text>
+      <div class="rmb-ctr">
+        <text class="rmb-icon">¥</text>
+        <text class="rmb-face">{{price}}</text>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  /**
+  * 商品展示列表 组件
+  */
+  require('weex-components')
+  var img0 = '//gw.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg_q50.jpg';
+  var img1 = '//img.alicdn.com/imgextra/i2/72/TB2QG04a9uJ.eBjy0FgXXXBBXXa_!!72-0-yamato.jpg_q50.jpg';
+  module.exports = {
+    data: {
+      itemList: [{
+        url: 'http://wt.tmall.com',
+        img: 'http://7xp4vm.com1.z0.glb.clouddn.com/4423980bgw1f8cmseczxnj20qo0f040m.jpg',
+        title: '给我一个SSSSSR',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i2/TB1VUABNFXXXXc.XpXXXXXXXXXX_!!0-item_pic.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i1/TB1DGkRLXXXXXc2XXXXXXXXXXXX_!!0-item_pic.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.20'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i4/2266437919/TB2O730hFXXXXbwXXXXXXXXXXXX_!!2266437919.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i1/TB1dq_KNFXXXXabXXXXXXXXXXXX_!!0-item_pic.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i2/TB1VUABNFXXXXc.XpXXXXXXXXXX_!!0-item_pic.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i4/2266437919/TB2O730hFXXXXbwXXXXXXXXXXXX_!!2266437919.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      },{
+        url: 'http://wt.tmall.com',
+        img: '//img.alicdn.com/bao/uploaded/i2/TB1rhedNXXXXXajXXXXXXXXXXXX_!!0-item_pic.jpg',
+        title: '拉夏贝尔2016冬新款纯色一粒扣中长款呢大衣外套女1001-1117',
+        price: '100.00'
+      }]
+    },
+    ready: function(){
+      console.log('cp-goods init...')
+      // this.itemList = this.itemList.concat(this.itemList)
+    },
+    methods: {
+      
+    }
+  }  
+</script>

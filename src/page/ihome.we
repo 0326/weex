@@ -1,0 +1,103 @@
+<style>
+  .content {
+    color: #353535;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .refresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<template>
+  <wxc-navpage data-role="none" height={{navBarHeight}} background-color="#d30625" title="天猫营业厅"
+    title-color="white" right-item-src="http://gtms02.alicdn.com/tps/i2/TB1ED7iMpXXXXXEXXXXWA_BHXXX-48-48.png">
+    <scroller class="content">
+      <refresh class="refresh" onRefresh="handleRefresh" display="{{displayRefresh}}"
+        style="flex-direction:row;">
+        <loading-indicator></loading-indicator>
+        <text style="margin-left:36px;color:#eee;">下拉刷新...</text>
+      </refresh>
+      <cp-slider></cp-slider>
+      <cp-boxlist></cp-boxlist>
+      <cp-title title="为你精选= = "></cp-title>
+      <cp-goods></cp-goods>
+      <cp-title title="为你推荐"></cp-title>
+      <cp-goods></cp-goods>
+      <loading class="loading" onLoading="handleLoading" display="{{displayLoading}}">
+        <text style="color:#eee;">加载更多...</text>
+      </loading>
+    </scroller>
+  </wxc-navpage>
+</template>
+<style>
+  
+</style>
+<script>
+  require('weex-components')
+  require('../component/cp-slider.we')
+  require('../component/cp-boxlist.we')
+  require('../component/cp-title.we')
+  require('../component/cp-goods.we')
+  module.exports = {
+    data: {
+      navBarHeight: 88,
+      cnt: 0,
+      displayRefresh: 'show',
+      displayLoading: 'show',
+    },
+    methods: {
+      ready: function () {
+        var self = this;
+        self._initData();
+        self._initEnv();
+      },
+      _initData: function () {
+        var self = this;
+        self.simLoadingData(this.cnt++)
+      },
+      _initEnv: function () {
+          var self = this;
+          var config = self.$getConfig(function () {
+                  }) || {};
+      },
+      handleRefresh: function (e) {
+        var vm = this
+        vm.displayRefresh = 'show'
+        setTimeout(function () {
+          vm.displayRefresh = 'hide'
+        }, 2000)
+      },
+      handleLoading: function (e) {
+        var vm = this
+        vm.displayLoading = 'show'
+        this.$call('modal', 'toast', {
+          message: 'loading.'
+        })
+        setTimeout(function () {
+          vm.simLoadingData(vm.cnt++)
+          vm.displayLoading = 'hide'
+        }, 2000)
+      },
+      simLoadingData: function (num) {
+        if (num >= 3) {
+          this.$call('modal', 'toast', {
+            message: '已到底部'
+          })
+          return
+        }
+        this['show' + num] = true
+      }
+    }
+  };
+</script>

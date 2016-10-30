@@ -1,0 +1,102 @@
+<style>
+.wrapper{
+  width: 750;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding-bottom: 18;
+}
+.item-box{
+  width: 150;
+  height: 140;
+  margin-top: 18;
+  align-items: center;
+}
+.item, .img {
+  width: 140;
+  height: 100;
+}
+.title {
+  height: 40;
+  font-size: 24;
+  justify-content: center;
+}
+
+</style>
+<template lang="">
+  <div class="wrapper">
+    <div class="item-box" repeat="{{itemList}}">
+      <div class="item" href="{{link}}"  onclick="">
+        <image class="img" src="{{image}}"></image>
+      </div> 
+      <text class="title">{{title}}</text>
+    </div>
+  </div>
+</template>
+<script>
+  /**
+  * table框组件
+  * 自定义行数，列数，以及大小
+  */
+  
+  require('weex-components')
+  var img0 = '//gw.alicdn.com/tps/TB1FDOHLVXXXXcZXFXXXXXXXXXX-183-129.png?imgtag=avatar';
+  var img1 = '//img.alicdn.com/tps/TB1GzMJLXXXXXXoXXXXXXXXXXXX-183-129.png';
+  module.exports = {
+    data: {
+      itemList: [{
+        image: img0,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: img1,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/1'
+      },
+      {
+        image: img0,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: img1,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/1'
+      },{
+        image: img0,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: img1,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/1'
+      },{
+        image: img0,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: img1,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/1'
+      },
+      {
+        image: img0,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: img1,
+        title: '充值中心',
+        link: '//h5.m.taobao.com/1'
+      }]
+    },
+    methods: {
+
+    }
+  }  
+</script>

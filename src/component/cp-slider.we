@@ -1,0 +1,62 @@
+<style>
+.slider{
+  width: 750;
+  height: 250;
+  background-color: #FFFF0F;
+}
+.slider-pages, .slider-img {
+  width: 750;
+  height: 250;
+}
+.indicator{
+  width:750;
+  height:20;
+  bottom:1;
+  left:1;
+  item-color: #666666;
+  item-selectedColor: #FFFFFF;
+  item-size: 20;
+}
+</style>
+<template lang="">
+  <slider class="slider" append="tree" interval="3000" auto-play="true">
+    <div class="slider-pages" repeat="{{sliderPages}}">
+      <image class="slider-img" src="{{image}}"></image>
+    </div>
+    <indicator class="indicator"></indicator>
+  </slider>
+</template>
+<script>
+  /**
+  * slider 组件
+  * 自定义宽高，图片，indicator样式
+  */
+  require('weex-components')
+  var img0 = '//gw.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg_q50.jpg';
+  var img1 = '//img.alicdn.com/imgextra/i2/72/TB2QG04a9uJ.eBjy0FgXXXBBXXa_!!72-0-yamato.jpg_q50.jpg';
+  module.exports = {
+    data: {
+      sliderPages: [
+        {
+          image: img0,
+          link: '//h5.m.taobao.com/0'
+        },
+        {
+          image: img1,
+          link: '//h5.m.taobao.com/1'
+        },
+        {
+          image: img0,
+          link: '//h5.m.taobao.com/0'
+        },
+        {
+          image: img1,
+          link: '//h5.m.taobao.com/1'
+        }
+      ]
+    },
+    methods: {
+
+    }
+  }  
+</script>

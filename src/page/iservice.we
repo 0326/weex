@@ -1,0 +1,22 @@
+<style>
+.webview{
+  width: 750;
+  height: 1000;
+}
+</style>
+<template>
+  <wxc-navpage data-role="none" height="80" background-color="#ff5898" title="特色服务"
+    title-color="white">
+    <scroller class="content">
+      <web class="webview" src="http://h5.m.taobao.com/app/ucenter/www/index.html"></web>
+    </scroller>
+  </wxc-navpage>
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      items: []
+    }
+  }
+</script>

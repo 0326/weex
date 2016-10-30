@@ -1,0 +1,42 @@
+<style>
+ .wrapper {
+   padding-left: 10;
+   height: 72;
+   border-left-width: 10;
+   border-left-color: #FF7500;
+   background-color: #FFFFFF;
+   border-bottom-width: 2;
+   border-bottom-color: #EEEEEE;
+   border-top-width: 2;
+   border-top-color: #EEEEEE;
+   border-style: solid;
+
+ }
+ .title {
+   height: 72;
+   font-size: 30;
+   justify-content: center;
+ }
+</style>
+<template lang="">
+  <div class="wrapper">
+    <text class="title">{{title}}</text>
+  </div>
+</template>
+<script>
+  /**
+  * slider 组件
+  * 自定义宽高，图片，indicator样式
+  */
+  require('weex-components')
+  var img0 = '//gw.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg_q50.jpg';
+  var img1 = '//img.alicdn.com/imgextra/i2/72/TB2QG04a9uJ.eBjy0FgXXXBBXXa_!!72-0-yamato.jpg_q50.jpg';
+  module.exports = {
+    data: {
+      title: '为你推荐'
+    },
+    methods: {
+
+    }
+  }  
+</script>

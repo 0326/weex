@@ -1,0 +1,191 @@
+<style>
+.content{
+  background-color: #cd2bff;
+}
+.refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-info{
+  width:750;
+  padding: 18;
+  background-color: #cd2bff;
+  color: #FFFFFF;
+}
+.userinfo{
+  width: 714;
+  height: 64;
+  flex-direction: row;
+  align-items: center;
+}
+.userinfo-img{
+  width: 64;
+  height: 64;
+  border-radius: 40;
+  margin-right: 14;
+}
+.userinfo-name{
+  font-size: 28;
+  color: #FFFFFF;
+}
+
+.phone-info{
+  flex-direction: row;
+  width: 714;
+  height: 100;
+  margin-top: 18;
+  /*border-bottom-width: 1;
+  border-bottom-style: solid;
+  border-bottom-color: #FFFFFF;*/
+}
+.remain {
+  position: relative;
+  width: 357;
+  height: 100;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.char-l{
+  font-size: 80;
+  color: #FFFFFF;
+}
+.char-s{
+  font-size: 40;
+  margin-top: 40;
+  color: #FFFFFF;
+}
+.char-tips{
+  position: absolute;
+  font-size: 26;
+  right: 0;
+  top: 0;
+  padding-left:4;
+  padding-right:4;
+  border-width: 2;
+  border-style: solid;
+  border-color: #FFFFFF;
+  border-radius: 4;
+  color: #FFFFFF;
+}
+
+.help {
+  margin-top: 18;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.char-ss{
+  font-size: 24;
+  color: #FFFFFF;
+}
+</style>
+<template>
+  <scroller class="content">
+    <refresh class="refresh" onRefresh="handleRefresh" display="{{displayRefresh}}"
+      style="flex-direction:row;">
+      <loading-indicator></loading-indicator>
+      <text style="margin-left:36px;color:#eee;">下拉刷新...</text>
+    </refresh>
+    <div class="account-info">
+      <div class="userinfo">
+        <image class="userinfo-img" src="{{userinfo.avatar}}"></image>
+        <text class="userinfo-name">{{userinfo.name}}</text>
+      </div>
+      <div class="phone-info">
+        <div class="remain">
+          <text class="char-l">{{phoneInfo.flow.remainInt}}</text>
+          <text class="char-s">.{{phoneInfo.flow.remainDeci}}</text>
+          <text class="char-s">{{phoneInfo.flow.unit}}</text>
+          <text class="char-tips">剩余流量</text>
+        </div>
+        <div class="remain" style="padding-left:18;">
+          <text class="char-l">{{phoneInfo.charge.remainInt}}</text>
+          <text class="char-s">.{{phoneInfo.charge.remainDeci}}</text>
+          <text class="char-s">{{phoneInfo.charge.unit}}</text>
+          <text class="char-tips">话费余额</text>
+        </div>
+      </div>
+      <div class="help">
+        <text class="char-ss">[截止 2016/10/30 22:33]</text>
+        <text class="char-ss">有疑问？点我</text>
+      </div>
+    </div>
+    <div style="background-color:#EFEFEF;padding-bottom:100;">
+      <cp-boxlist item-list="{{itemList}}"></cp-boxlist>
+      <cp-richlist></cp-richlist>
+      <cp-richlist rich-list="{{richList}}"></cp-richlist>
+    </div>
+  </scroller>
+</template>
+
+<script>
+  require('../component/cp-boxlist.we')
+  require('../component/cp-richlist.we')
+  module.exports = {
+    data: {
+      displayRefresh: 'show',
+      userinfo: {
+        avatar: 'https://avatars3.githubusercontent.com/u/8676306?v=3&s=466',
+        name: '动感小前端'
+      },
+      phoneInfo: {
+        flow: {
+          remainInt: 1001,
+          remainDeci: '24',
+          unit: 'MB'
+        },
+        charge: {
+          remainInt: 123,
+          remainDeci: '00',
+          unit: '元'
+        }
+      },
+      itemList: [{
+        image: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b1.jpg',
+        title: '商品收藏',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b4.jpg',
+        title: '店铺收藏',
+        link: '//h5.m.taobao.com/1'
+      },
+      {
+        image: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b3.jpg',
+        title: '内容收藏',
+        link: '//h5.m.taobao.com/0'
+      },
+      {
+        image: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b2.jpg',
+        title: '我的关注',
+        link: '//h5.m.taobao.com/1'
+      },{
+        image: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b4.jpg',
+        title: '我的好友',
+        link: '//h5.m.taobao.com/0'
+      }],
+      richList: [{
+        icon: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b4.jpg',
+        title: '安全中心',
+        desc: '这是描述',
+        link: '//h5.m.taobao.com/1'
+      },{
+        icon: 'http://7xp4vm.com1.z0.glb.clouddn.com/icon-b4.jpg',
+        title: '设置',
+        link: '//h5.m.taobao.com/0'
+      }]      
+    },
+    methods: {
+      handleRefresh: function (e) {
+        var vm = this
+        vm.displayRefresh = 'show'
+        setTimeout(function () {
+          vm.phoneInfo.charge.remainInt --
+          vm.phoneInfo.flow.remainInt -= 3
+          vm.displayRefresh = 'hide'
+        }, 1000)
+      }
+    }
+  }
+</script>
